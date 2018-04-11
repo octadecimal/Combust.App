@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 864140926
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: zombieland.hd
+      Dependencies: {}
+    Info_1:
+      Name: zombieland.sd
+      Dependencies: {}
