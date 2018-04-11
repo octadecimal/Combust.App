@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotGameController : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     /// <summary>
     /// Name of game. Used for asset prefixes.

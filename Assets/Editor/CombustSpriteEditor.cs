@@ -57,7 +57,7 @@ class CombustSpriteTools : Editor
         Clear();
 
         // Get current game name
-        string gameName = FindObjectOfType<SlotGameController>().GameName;
+        string gameName = FindObjectOfType<GameController>().GameName;
 
         // Create request
         var request = AssetBundle.LoadFromFileAsync(Path.Combine("AssetBundles/StandaloneWindows", "zombieland."+quality));

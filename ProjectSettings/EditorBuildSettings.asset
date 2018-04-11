@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Application/ApplicationScene.unity
+    guid: 18892e41c3f66ef4fa0a6ca4513a1695
+  - enabled: 1
+    path: Assets/Games/Zombieland/Zombieland.unity
+    guid: 8a6469e9690c72f46bfd58b3746a0799

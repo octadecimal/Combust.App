@@ -1,6 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class ApplicationController : MonoBehaviour
 {
@@ -24,6 +28,11 @@ public class ApplicationController : MonoBehaviour
     /// </summary>
     public string RemoteUri = "https://neatocdn.blob.core.windows.net/static/";
 
+    /// <summary>
+    /// Next scene to be loaded.
+    /// </summary>
+    public string NextScene = "Zombieland";
+
 
     // COMPONENT
     // ========================================================================
@@ -39,6 +48,9 @@ public class ApplicationController : MonoBehaviour
 
         // Detect platform
         DetectPlatform();
+
+        // Load next scene
+        LoadNextScene();
 	}
 
 
@@ -55,15 +67,19 @@ public class ApplicationController : MonoBehaviour
         {
             case RuntimePlatform.WindowsPlayer:
             case RuntimePlatform.WindowsEditor:
-                Platform = "windows";
+                Platform = "StandaloneWindows";
                 break;
 
             case RuntimePlatform.Android:
-                Platform = "android";
+                Platform = "Android";
                 break;
 
             case RuntimePlatform.IPhonePlayer:
-                Platform = "ios";
+                Platform = "iOS";
+                break;
+
+            case RuntimePlatform.WebGLPlayer:
+                Platform = "WebGL";
                 break;
 
             default:
@@ -72,5 +88,53 @@ public class ApplicationController : MonoBehaviour
         }
 
         Debug.Log("Detected platform: " + Platform);
+    }
+
+    /// <summary>
+    /// Loads the next scene.
+    /// </summary>
+    private void LoadNextScene()
+    {
+        if(Remote)
+        {
+            StartCoroutine(LoadRemoteAssetBundle());
+        }
+        else
+        {
+            AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(Path.Combine(@"AssetBundles\"+Platform, NextScene.ToLower() + "." + Quality));
+            request.completed += OnAssetBundleLoadComplete;
+        }
+    }
+
+    /// <summary>
+    /// Loads a remote asset bundle.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator LoadRemoteAssetBundle()
+    {
+        UnityWebRequest www = UnityWebRequest.GetAssetBundle(RemoteUri+Platform+"/"+NextScene.ToLower() +"."+ Quality);
+
+        yield return www.SendWebRequest();
+
+        Debug.Log("Progress: " + www.downloadProgress);
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.LogError(www.error);
+        }
+        else
+        {
+            AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
+            SceneManager.LoadScene(NextScene);
+        }
+    }
+
+
+    // EVENTS
+    // ========================================================================
+
+    private void OnAssetBundleLoadComplete(AsyncOperation obj)
+    {
+        SceneManager.LoadScene(NextScene);
     }
 }

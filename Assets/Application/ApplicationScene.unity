@@ -223,8 +223,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Quality: hd
   Platform: 
-  Remote: 0
+  Remote: 1
   RemoteUri: https://neatocdn.blob.core.windows.net/static/
+  NextScene: zombieland
 --- !u!4 &1406529523
 Transform:
   m_ObjectHideFlags: 0

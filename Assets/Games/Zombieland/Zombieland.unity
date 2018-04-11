@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 827877644}
   - component: {fileID: 827877643}
   m_Layer: 0
-  m_Name: SlotGame
+  m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,8 @@ SpriteRenderer:
   m_SortingLayerID: -408830825
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 086e2dda6b25ab54cb23bdfbdca76d0f, type: 3}
+  m_Sprite: {fileID: -5287144558249893397, guid: 00000000000000000000000000000000,
+    type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -293,7 +294,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 954a3a4dae4727c47841cfa2fb4b301b, type: 3}
+  m_Sprite: {fileID: -6696850858161001267, guid: 00000000000000000000000000000000,
+    type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -366,7 +368,8 @@ SpriteRenderer:
   m_SortingLayerID: 619230687
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e3cc450425bd0e4783ef1ab224b0725, type: 3}
+  m_Sprite: {fileID: 4809556859011592760, guid: 00000000000000000000000000000000,
+    type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
